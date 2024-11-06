@@ -240,7 +240,7 @@ const DashboardHome = () => {
                         {userDataCard.map((userData, index) => (
                             <div
                                 key={index}
-                                className={`bg-white p-4 rounded-lg shadow-sm  border border-gray-200 min-h-[200px] ${index == 0 && "col-span-2"}`}
+                                className={`bg-white p-4 rounded-lg shadow-sm  border border-gray-200 min-h-[200px] ${index == 0 && "md:col-span-2"}`}
                             >
                                 <h3 className="text-lg font-semibold mb-4">
                                     {userData.title}
