@@ -1,4 +1,4 @@
-import { Link, Outlet } from "react-router-dom";
+import { Link, NavLink, Outlet } from "react-router-dom";
 import {
     MdDashboard,
     MdNotifications,
@@ -10,7 +10,7 @@ import { GoDotFill } from "react-icons/go";
 import { HiChevronDown } from "react-icons/hi";
 import { IoPeople } from "react-icons/io5";
 import { FaHome } from "react-icons/fa";
-import { CiMobile2,CiLogout } from "react-icons/ci";
+import { CiMobile2, CiLogout } from "react-icons/ci";
 import { IoMdSettings } from "react-icons/io";
 import { useState } from "react";
 
@@ -71,14 +71,20 @@ const Dashboard = () => {
                     </div>
 
                     <div className="p-4">
-                        <li >
-                            <Link
+                        <li>
+                            <NavLink
                                 to="/dashboard"
-                                className="flex items-center p-2 text-gray-700 rounded-lg hover:bg-gray-100 mb-3 "
+                                className={({ isActive }) =>
+                                    `flex items-center p-2 text-gray-700 rounded-lg hover:bg-gray-100 mb-3 ${
+                                        isActive
+                                            ? " border-l-4 border-blue-500"
+                                            : ""
+                                    }`
+                                }
                             >
-                                <FaHome className="text-xl mr-0 " />
+                                <FaHome className="text-xl mr-0" />
                                 <span className="font-semibold">Dashboard</span>
-                            </Link>
+                            </NavLink>
                         </li>
 
                         {/* Notifications with Logs submenu */}
@@ -104,15 +110,21 @@ const Dashboard = () => {
                             {openDropdown === "notifications" && (
                                 <ul className="pl-2 mt-1 space-y-1">
                                     <li>
-                                        <Link
+                                        <NavLink
                                             to="/notifications"
-                                            className="flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200 mb-3"
+                                            className={({ isActive }) =>
+                                                `flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200 mb-3 ${
+                                                    isActive
+                                                        ? " border-l-4 border-blue-500"
+                                                        : ""
+                                                }`
+                                            }
                                         >
                                             <GoDotFill className="mr-2" />
                                             <span className="font-semibold">
                                                 Logs
                                             </span>
-                                        </Link>
+                                        </NavLink>
                                     </li>
                                 </ul>
                             )}
@@ -120,9 +132,15 @@ const Dashboard = () => {
 
                         {/* App Settings */}
                         <li>
-                            <button
+                            <NavLink to=''
                                 onClick={() => toggleDropdown("appSettings")}
-                                className="flex items-center justify-between w-full p-2 text-gray-700 rounded-lg hover:bg-gray-200 mb-3"
+                                className={({ isActive }) =>
+                                    `flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200 mb-3 ${
+                                        isActive
+                                            ? " border-l-4 border-blue-500"
+                                            : ""
+                                    }`
+                                }
                             >
                                 <div className="flex items-center">
                                     <CiMobile2 className="text-xl mr-3" />
@@ -137,14 +155,14 @@ const Dashboard = () => {
                                             : "rotate-0"
                                     }`}
                                 />
-                            </button>
+                            </NavLink>
                         </li>
 
                         {/* Membership with Corporate Employees and User Profile submenu */}
                         <li>
                             <button
                                 onClick={() => toggleDropdown("membership")}
-                                className="flex items-center justify-between w-full p-2 text-gray-700 rounded-lg hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700 mb-3"
+                                className="flex items-center justify-between w-full p-2 text-gray-700 rounded-lg hover:bg-gray-200 mb-3"
                             >
                                 <div className="flex items-center">
                                     <MdGroup className="text-xl mr-3" />
@@ -163,40 +181,54 @@ const Dashboard = () => {
                             {openDropdown === "membership" && (
                                 <ul className="pl-2 mt-1 space-y-1">
                                     <li>
-                                        <a
-                                            href="#"
-                                            className="flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700"
+                                        <NavLink
+                                            to="/membership/corporate-employees"
+                                            className={({ isActive }) =>
+                                                `flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200 ${
+                                                    isActive
+                                                        ? "text-blue-500"
+                                                        : ""
+                                                }`
+                                            }
                                         >
                                             <GoDotFill className="mr-2" />
                                             <span className="font-semibold">
                                                 Corporate Employees
                                             </span>
-                                        </a>
+                                        </NavLink>
                                     </li>
                                     <li>
-                                        <a
-                                            href="#"
-                                            className="flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700 mb-3"
+                                        <NavLink
+                                            to="/membership/user-profile"
+                                            className={({ isActive }) =>
+                                                `flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200 mb-3 ${
+                                                    isActive
+                                                        ? "text-blue-500"
+                                                        : ""
+                                                }`
+                                            }
                                         >
                                             <GoDotFill className="mr-2" />
                                             <span className="font-semibold">
                                                 User Profile
                                             </span>
-                                        </a>
+                                        </NavLink>
                                     </li>
                                 </ul>
                             )}
                         </li>
 
+                        {/* Offers */}
                         <li>
                             <button
                                 onClick={() => toggleDropdown("offers")}
-                                className="flex items-center justify-between w-full p-2 text-gray-700 rounded-lg hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700 mb-3"
+                                className="flex items-center justify-between w-full p-2 text-gray-700 rounded-lg hover:bg-gray-200 mb-3"
                             >
                                 <div className="flex items-center">
                                     <IoPeople className="text-xl mr-3" />
-
-                                    <span className="font-semibold">Offers</span>
+                                    <span className="font-semibold">
+                                        Offers
+                                    </span>
                                 </div>
                                 <HiChevronDown
                                     className={`transform transition-transform ${
@@ -212,7 +244,7 @@ const Dashboard = () => {
                         <li>
                             <button
                                 onClick={() => toggleDropdown("adminReports")}
-                                className="flex items-center justify-between w-full p-2 text-gray-700 rounded-lg hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700 mb-3"
+                                className="flex items-center justify-between w-full p-2 text-gray-700 rounded-lg hover:bg-gray-200 mb-3"
                             >
                                 <div className="flex items-center">
                                     <MdGroup className="text-xl mr-3" />
@@ -230,6 +262,7 @@ const Dashboard = () => {
                             </button>
                         </li>
 
+                        {/* Admin */}
                         <li>
                             <button
                                 onClick={() => toggleDropdown("admin")}
@@ -248,16 +281,20 @@ const Dashboard = () => {
                                 />
                             </button>
                         </li>
+
+                        {/* Customer Service */}
                         <li>
                             <button
                                 onClick={() =>
                                     toggleDropdown("customerservice")
                                 }
-                                className="flex items-center justify-between w-full p-2 text-gray-700 rounded-lg hover:bg-gray-200 dark:text-gray-200 dark:hover:bg-gray-700"
+                                className="flex items-center justify-between w-full p-2 text-gray-700 rounded-lg hover:bg-gray-200"
                             >
                                 <div className="flex items-center">
                                     <IoMdSettings className="text-xl mr-3" />
-                                    <span className="font-semibold">Customer Service</span>
+                                    <span className="font-semibold">
+                                        Customer Service
+                                    </span>
                                 </div>
                                 <HiChevronDown
                                     className={`transform transition-transform ${
@@ -277,7 +314,9 @@ const Dashboard = () => {
                             className="flex items-center mx-auto justify-center text-gray-700 border-t border-gray-200 w-full pt-4 rounded-lg hover:bg-gray-200  lg:mt-20"
                         >
                             <CiLogout className="text-2xl mr-1 text-blue-600 font-bold text-center" />
-                            <span className="font-semibold">Account Logout</span>
+                            <span className="font-semibold">
+                                Account Logout
+                            </span>
                         </a>
                     </li>
                 </ul>

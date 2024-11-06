@@ -1,6 +1,6 @@
 import { useState } from "react";
 import {
-    MdHistory,
+    
     MdPerson,
     MdMedicalServices,
     MdDescription,
@@ -97,7 +97,7 @@ const DashboardHome = () => {
         {
             title: "Users Registration Monthly Activity Summary",
             content: (
-                <div className="md:col-span-2">
+                <div className="">
                     <div id="chart">
                         <ReactApexChart
                             options={chartData.options}
@@ -127,7 +127,7 @@ const DashboardHome = () => {
     const options = ["Monthly", "Weekly", "Daily"];
 
     return (
-        <div className="bg-gray-200 p-2">
+        <div className="bg-gray-100 p-2">
             <div
                 className="text-gray-300  flex gap-1 flex-col 
         lg:flex-row translate-all duration-300"
@@ -234,13 +234,13 @@ const DashboardHome = () => {
 
             <div className="">
                 <div className="">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
                         {/* Users Registration Monthly Activity Summary */}
 
                         {userDataCard.map((userData, index) => (
                             <div
                                 key={index}
-                                className=" bg-white p-4 rounded-lg shadow-sm  border border-gray-200 min-h-[200px]"
+                                className={`bg-white p-4 rounded-lg shadow-sm  border border-gray-200 min-h-[200px] ${index == 0 && "col-span-2"}`}
                             >
                                 <h3 className="text-lg font-semibold mb-4">
                                     {userData.title}
