@@ -135,7 +135,7 @@ const Dashboard = () => {
                             <NavLink to=''
                                 onClick={() => toggleDropdown("appSettings")}
                                 className={({ isActive }) =>
-                                    `flex items-center p-2 text-gray-600 rounded-lg hover:bg-gray-200 mb-3 ${
+                                    `flex items-center justify-between p-2 text-gray-700 rounded-lg hover:bg-gray-200 mb-3 ${
                                         isActive
                                             ? " border-l-4 border-blue-500"
                                             : ""
@@ -157,6 +157,7 @@ const Dashboard = () => {
                                 />
                             </NavLink>
                         </li>
+
 
                         {/* Membership with Corporate Employees and User Profile submenu */}
                         <li>
